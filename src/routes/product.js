@@ -7,30 +7,30 @@ const isAdmin = require("../controller/isAdmin");
 
 router.post(
   "/postProduct",
-  verifyToken,
-  isAuthorized,
-  isAdmin,
+  // verifyToken,
+  // isAuthorized,
+  // isAdmin,
   productController.postProduct
 );
 router.get(
   "/viewProducts",
-  verifyToken,
-  isAuthorized,
-  isAdmin,
+  // verifyToken,
+  // isAuthorized,
+  // isAdmin,
   productController.viewProducts
 );
 router.delete(
   "/deleteProduct/:id",
-  verifyToken,
-  isAuthorized,
-  isAdmin,
+  // verifyToken,
+  // isAuthorized,
+  // isAdmin,
   productController.deleteProduct
 );
 router.put(
   "/updateProduct/:id",
-  verifyToken,
-  isAuthorized,
-  isAdmin,
+  // verifyToken,
+  // isAuthorized,
+  // isAdmin,
   productController.updateProduct
 );
 router.get(

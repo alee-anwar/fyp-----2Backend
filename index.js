@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require('cors');
+
+app.use(cors());
 require("./src/db/connection");
 app.use(bodyParser.json());
 app.get(express.json());
@@ -9,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //require("dotenv").config({ path: __dirname + "/.env" });
 
 //Below are files of routes folder.
-const autRoute = require("./src/routes/auth");
+const autRoute = require("./src/routes/auth"); 
 const productRoute = require("./src/routes/product");
 const orderListRoute = require("./src/routes/order");
 const customerList = require("./src/routes/customerList");
