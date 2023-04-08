@@ -65,7 +65,7 @@ exports.postProduct = async (req, res, next) => {
           .catch((err) => {
             console.log(err);
             {
-              return res.send(err);
+              return res.send("Error while uploading the product" + err);
             }
           });
       }
@@ -76,7 +76,7 @@ exports.viewProducts = async (req, res, next) => {
   console.log("The view products API has been hit");
   try {
     const results = await ImageModel.find(
-      {},
+      {}
       // { productTitle: 1, SKU: 1, category: 1, price: 1, status: 1 }
     );
     res.send(results);
@@ -148,21 +148,24 @@ exports.updateProduct = async (req, res, next) => {
 exports.deleteProduct = async (req, res, next) => {
   console.log("The delete product API has been hit.");
   let deleteId = req.params.id;
-  ImageModel.findOneAndDelete({ SKU: deleteId }, function (err, docs) {
-    if (err) {
-      res.send("Error! You have entered wrong key.");
-    } else {
-      if (docs === null) {
-        res.send("Wrong ID");
+
+  try {
+    ImageModel.findOneAndDelete({ SKU: deleteId }, function (err, docs) {
+      if (err) {
+        res.send("Error! You have entered wrong key type.");
       } else {
-        res.send(
-          "The requested record with SKU = " + deleteId + " has been deleted"
-        );
+        if (docs === null) {
+          res.send("Wrong ID");
+        } else {
+          res.send(
+            "The requested record with SKU = " + deleteId + " has been deleted"
+          );
+        }
       }
-    }
+    });
+  } catch (error) {
+    console.log("Could not delete the product." + error);
   }
-  )
-  
 };
 
 exports.searchProducts = async (req, res, next) => {

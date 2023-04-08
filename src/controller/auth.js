@@ -8,8 +8,9 @@ const users = require("../models/auth");
 exports.signUp = async (req, res, next) => {
   console.log("The signup API has been called in mvc learning");
   // const Email = req.body.email; //This "Email" spelling has to be different than of the schema when comparing the two values in find queries
-  const { firstName, lastName, email, password, confirmPassword, isAdmin } = req.body;
-console.log(firstName) 
+  const { firstName, lastName, email, password, confirmPassword, isAdmin } =
+    req.body;
+
   const check = await users.findOne({ email: email });
 
   if (check) {
