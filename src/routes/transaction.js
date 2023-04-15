@@ -14,9 +14,9 @@ router.post(
 );
 router.get(
   "/viewTransaction",
-  verifyToken,
-  isAuthorized,
-  isAdmin,
+  // verifyToken,
+  // isAuthorized,
+  // isAdmin,
   TransactionController.viewTransaction
 );
 router.get(
@@ -28,9 +28,9 @@ router.get(
 );
 router.delete(
   "/deleteTransaction/:id",
-  verifyToken,
-  isAuthorized,
-  isAdmin,
+  // verifyToken,
+  // isAuthorized,
+  // isAdmin,
   TransactionController.deleteTransaction
 );
 router.get(
