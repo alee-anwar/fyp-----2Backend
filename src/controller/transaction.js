@@ -5,16 +5,16 @@ const transaction = require("../models/transaction");
 exports.postTransaction = async (req, res, next) => {
   console.log("THE POSTtRANSACTION API HAS BEEN HIT.");
   console.log(req.body);
-  const { TransactionID, Status, OID, CustomerName, Date } = req.body;
+  const { transactionID, status, OID, customerName, date } = req.body;
   //   const check = await transaction.find({ transactionId: TransactionId });
   // 1  //   const check = await users.findOne({ email: Email });
   try {
     const newTransaction = new transaction({
-      transactionId: TransactionID,
-      status: Status,
+      transactionId: transactionID,
+      status: status,
       oid: OID,
-      customerName: CustomerName,
-      date: Date,
+      customerName: customerName,
+      date: date,
     });
 
     await newTransaction.save().then((result) => {
